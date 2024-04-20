@@ -1,1 +1,2 @@
+[DBServers]
 172.31.33.77 ansible_user= ec2-user
