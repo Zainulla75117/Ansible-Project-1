@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: Creating Users
+    user:
+     name: '{{item}}'
+    with_items:
+     - Zain
+     - Lenovo
+      
+...

@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: Removing Users
+    user:
+     name: '{{item}}'
+     state: absent
+     remove: yes
+    with_items:
+     - Zain
+     - Lenovo
+      
+...

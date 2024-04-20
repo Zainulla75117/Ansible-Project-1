@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: Installing Java On Servers
+    yum:
+     name: "{{javapackage}}"
+     state: latest
+...

@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: no
+  become: true
+
+  tasks:
+    - name: Create File
+      file:
+        path: /tmp/testFile1.sh
+       #src: /tmp/testFile1.sh
+       #dest: /tmp/testFile1-link.sh
+        state: absent
+        owner: ansible
+        group: ansible
+       #mode: 0777
+...

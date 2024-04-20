@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: no
+  become: true
+  vars_files:
+   variables.yaml
+  tasks:
+  - name: Install HTTP Server In Ubuntu
+    apt:
+     name: apache2
+     state: latest
+  - name: Copy index.html
+    template:
+     src: index.html
+     dest: /var/www/html/index.html
+...

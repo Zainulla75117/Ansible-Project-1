@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+  vars:
+   name: Zain
+   year: 2023
+  tasks:
+   - name: Exe Debug Mode using variables
+     debug:
+      #var: name
+      msg: Name and year is={{name, year}}
+...

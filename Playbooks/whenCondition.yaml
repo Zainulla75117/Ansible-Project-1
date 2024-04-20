@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: true
+  #gather_facts: no
+
+  tasks:
+  - name: Install HTTP Server In ALS
+    yum: 
+     name: httpd
+     state: latest
+    when: ansible_distribution == "Amazon"
+  - name: Install HTTP Server In Ubuntu
+    apt:
+     name: apache2
+     state: latest
+    when: ansible_distribution == "Ubuntu"
+...

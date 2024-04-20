@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: Install Git
+    yum:
+     name: git
+     state: latest
+  - name: Install Zip
+    yum: 
+     name: zip
+     state: latest
+  - name: Install Tree
+    yum: 
+     name: tree
+     state: latest
+...

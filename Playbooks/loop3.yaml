@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: Installing Apps loop3
+    yum:
+     name: ['git', 'zip',]
+     state: latest
+
+...
