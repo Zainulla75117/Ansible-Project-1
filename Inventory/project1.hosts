@@ -2,3 +2,6 @@ localhost
 
 [DBServers]
 172.31.33.77 ansible_user=ec2-user
+
+[Appservers]
+172.31.37.232 ansible_user=ec2-user
