@@ -12,12 +12,12 @@
   - name: Download SonarQube In Amazon Linux
     get_url:
      url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.5.1.90531.zip
-     dest: /home/ec2-user
-
-  - name: Copying Files to /opt Directory
-    copy:
-     src: /home/ec2-user/sonarqube-10.5.1.90531.zip
      dest: /opt
+
+  #- name: Copying Files to /opt Directory
+   # copy:
+    # src: /home/ec2-user/sonarqube-10.5.1.90531.zip
+     #dest: /opt
 
   - name: Add Sonar User
     user:
@@ -32,6 +32,7 @@
     shell:
      cmd: mv /opt/sonarqube-10.5.1.90531 /opt/sonarqube
      chdir: /opt
+    when: /opt/sonarqube-10.5.1.90531 == true
 
   - name: changing owner and group to sonar user
     file:
