@@ -16,7 +16,7 @@ pipeline {
      
     stage('Exe-Ansible-Playbook') {
       steps {
-        sh "ansible-playbook -i Inventory/project1.hosts --private-key=$AWS_EC2 Playbooks/pingServer.yaml --ssh-common-args='-o StrictHostKeyChecking=no'"
+        sh "ansible-playbook -i Inventory/project1.hosts --private-key=$AWS_EC2 Playbooks/installSonarQubeServer.yaml --ssh-common-args='-o StrictHostKeyChecking=no'"
       }
     }
   

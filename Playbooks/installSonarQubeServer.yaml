@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: Install Unzip Server in Amazon Linux
+    yum: 
+     name: unzip
+     state: latest
+
+  - name: Download SonarQube In Amazon Linux
+    get_url:
+     url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.5.1.90531.zip
+     dest: /home/ec2-user
+
+  - name: Copying Files to /opt Directory
+    copy:
+     src: /home/ec2-user/sonarqube-10.5.1.90531.zip
+     dest: /opt
+
+  - name: Add Sonar User
+    user:
+     name: sonar 
+     #group: sonar
+
+  - name: Unzipping SonarQube File
+    shell:
+     cmd: unzip sonarqube-10.5.1.90531.zip
+     chdir: /opt
+...
