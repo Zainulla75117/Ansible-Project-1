@@ -35,7 +35,8 @@
 
   - name: changing owner and group to sonar user
     file:
-     path: /opt/sonarqube/*
+     path: /opt/sonarqube/
+     recurse: yes
      owner: sonar
      group: sonar
      mode: '0775'
