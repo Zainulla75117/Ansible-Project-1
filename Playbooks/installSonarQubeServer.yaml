@@ -22,10 +22,26 @@
   - name: Add Sonar User
     user:
      name: sonar 
-     #group: sonar
 
   - name: Unzipping SonarQube File
     shell:
      cmd: unzip sonarqube-10.5.1.90531.zip
      chdir: /opt
+
+  - name: changing name of sonarqube-10.5.1.90531 --> sonarqube
+    shell:
+     cmd: mv /opt/sonarqube-10.5.1.90531 /opt/sonarqube
+     chdir: /opt/sonarqube-10.5.1.90531
+
+  - name: changing owner and group to sonar user
+    file:
+     path: /opt/sonarqube/
+     owner: sonar
+     group: sonar
+     mode: '0775'
+
+  - name: Starting SonarQube at Port No 9000
+    shell:
+     cmd: sh sonar.sh start
+     chdir: /opt/sonarqube/bin/linux-x86-64/
 ...
