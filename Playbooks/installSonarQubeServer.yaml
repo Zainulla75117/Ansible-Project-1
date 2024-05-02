@@ -32,7 +32,7 @@
     shell:
      cmd: mv /opt/sonarqube-10.5.1.90531 /opt/sonarqube
      chdir: /opt
-     ignore_error: true
+     ignore_errors: true
   - name: changing owner and group to sonar user
     file:
      path: /opt/sonarqube/
