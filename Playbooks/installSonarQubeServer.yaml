@@ -24,14 +24,14 @@
      name: sonar 
 
   - name: Unzipping SonarQube File
-    shell:
-     cmd: unzip sonarqube-10.5.1.90531.zip
-     chdir: /opt
+    unarchive:
+     src: /opt/sonarqube-10.5.1.90531.zip
+     dest: /opt
 
   - name: changing name of sonarqube-10.5.1.90531 --> sonarqube
     shell:
      cmd: mv /opt/sonarqube-10.5.1.90531 /opt/sonarqube
-     chdir: /opt/sonarqube-10.5.1.90531
+     chdir: /opt
 
   - name: changing owner and group to sonar user
     file:
