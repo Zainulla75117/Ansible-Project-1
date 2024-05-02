@@ -40,8 +40,4 @@
      group: sonar
      mode: '0775'
 
-  - name: Starting SonarQube at Port No 9000
-    shell:
-     cmd: sh sonar.sh start
-     chdir: /opt/sonarqube/bin/linux-x86-64/
 ...
