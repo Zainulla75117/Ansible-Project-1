@@ -14,11 +14,6 @@
      url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.5.1.90531.zip
      dest: /opt
 
-  #- name: Copying Files to /opt Directory
-   # copy:
-    # src: /home/ec2-user/sonarqube-10.5.1.90531.zip
-     #dest: /opt
-
   - name: Add Sonar User
     user:
      name: sonar 
@@ -28,11 +23,12 @@
      src: /opt/sonarqube-10.5.1.90531.zip
      dest: /opt
 
-  - name: changing name of sonarqube-10.5.1.90531 --> sonarqube
-    shell:
-     cmd: mv /opt/sonarqube-10.5.1.90531 /opt/sonarqube
-     chdir: /opt
-     ignore_errors: true
+  #- name: changing name of sonarqube-10.5.1.90531 --> sonarqube
+  #  shell:
+  #   cmd: mv /opt/sonarqube-10.5.1.90531 /opt/sonarqube
+  #   chdir: /opt
+  #   ignore_errors: true
+
   - name: changing owner and group to sonar user
     file:
      path: /opt/sonarqube/
