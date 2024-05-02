@@ -32,8 +32,7 @@
     shell:
      cmd: mv /opt/sonarqube-10.5.1.90531 /opt/sonarqube
      chdir: /opt
-    when: /opt/sonarqube-10.5.1.90531 == true
-
+    when: result is changed
   - name: changing owner and group to sonar user
     file:
      path: /opt/sonarqube/
