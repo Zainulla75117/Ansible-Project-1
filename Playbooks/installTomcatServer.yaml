@@ -52,19 +52,16 @@
      daemon_reload: true
      name: tomcat.service
 
-  - name: Enabling tomcat.service
-    systemd_service:
-     name: tomcat.service
-     enabled: true
+ - name: chmod tomcat.service
+   file:
+   path: /etc/systemd/system/tomcat.service
+    mode:  '0755'
+ - name: start tomcat
+   systemd:
+    name: tomcat.service
+    daemon_reload: yes
+    enabled: yes
+    state: started
 
-  - name: Starting tomcat server 
-    systemd_service:
-     name: tomcat.service
-     state: started
-
-  - name: Checking Tomcat Server 
-    shell:
-     cmd: systemctl status tomcat.service
-    
 
 ...
