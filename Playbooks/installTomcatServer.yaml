@@ -32,31 +32,27 @@
      group: tomcat
      recurse: yes
     
-  - name: Creating symbolic link
+  - name: Creating symbolic link - Start
     file:
-     src: /opt/apache-tomcat-10.1.23 
-     dest: /usr/local/tomcat10
+     src: /opt/apache-tomcat-10.1.23/bin/startup.sh  
+     dest: /usr/bin/startTomcat
      owner: tomcat
      group: tomcat
      mode: '0775'
      state: link
 
-  - name: Copying tomcat.service to systemd dir 
-    copy: 
-     src: /home/ec2-user/tomcat.service
-     dest: /etc/systemd/system/
-
-  - name: chmod tomcat.service
+  - name: Creating symbolic link - Stop
     file:
-     path: /etc/systemd/system/tomcat.service
-     mode:  '0755'
-     
-  - name: start tomcat
-    systemd:
-     name: tomcat.service
-     daemon_reload: yes
-     enabled: yes
-     state: started
+     src: /opt/apache-tomcat-10.1.23/bin/shutdown.sh   
+     dest: /usr/bin/stopTomcat
+     owner: tomcat
+     group: tomcat
+     mode: '0775'
+     state: link
+
+  - name: Starting Tomcat
+    shell:
+     cmd: startTomcat
 
 
 ...
