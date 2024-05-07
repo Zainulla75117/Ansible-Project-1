@@ -32,7 +32,7 @@
      group: tomcat
      recurse: yes
     
-  - name: Copying files to local folder - Softlink
+  - name: Creating symbolic link
     file:
      src: /opt/apache-tomcat-10.1.23 
      dest: /usr/local/apache-tomcat-10.1.23
