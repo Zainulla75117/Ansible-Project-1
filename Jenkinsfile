@@ -5,7 +5,7 @@ pipeline {
   
   environment {
    AWS_EC2=credentials('AWSEC2PEM') 
-   playbook= installTomcatServer.yaml
+   playbook= 'installTomcatServer.yaml'
   }
   
   stages {
@@ -17,7 +17,7 @@ pipeline {
      
     stage('Exe-Ansible-Playbook') {
       steps {
-        sh "ansible-playbook -i Inventory/project1.hosts --private-key=$AWS_EC2 Playbooks/$playbook --ssh-common-args='-o StrictHostKeyChecking=no'"
+        sh "ansible-playbook -i Inventory/project1.hosts --private-key=$AWS_EC2 Playbooks/${playbook} --ssh-common-args='-o StrictHostKeyChecking=no'"
       }
     }
   
