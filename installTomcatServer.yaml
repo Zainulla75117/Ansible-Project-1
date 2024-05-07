@@ -1,0 +1,63 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: Installing Unzip
+    yum:
+     name: unzip
+     state: latest
+
+  - name: Downloading TomcatServer....
+    get_url:
+     url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.23/bin/apache-tomcat-10.1.23.zip
+     dest: /opt
+     mode: u+x
+
+  - name: Adding User Tomcat
+    user:
+     name: tomcat 
+
+  - name: Extracting Tomcat Package
+    unarchive:
+     src: /opt/apache-tomcat-10.1.23.zip
+     dest: /opt/tomcat10
+     mode: u+x
+     owner: tomcat
+     group: tomcat
+
+  - name: Copying files to local folder
+    copy:
+     src: /opt/apache-tomcat-9.0.44 
+     dest: /usr/local/apache-tomcat-9.0.44
+     owner: tomcat
+     group: tomcat
+     mode: u+x
+
+  - name: Copying tomcat.service to systemd dir 
+    copy: 
+     src: /home/ec2-user/tomcat.service
+     dest: /etc/systemd/system/
+
+  - name: reloading systemctl
+    systemd_service:
+     state: restarted
+     daemon_reload: true
+
+  - name: Enabling tomcat.service
+    systemd_service:
+     name: tomcat.service
+     enabled: true
+
+  - name: Starting tomcat server 
+    systemd_service:
+     name: tomcat.service
+     state: started
+
+  - name: Checking Tomcat Server 
+    shell:
+     cmd: systemctl status tomcat.service
+    
+
+...
