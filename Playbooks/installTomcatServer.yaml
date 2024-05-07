@@ -13,7 +13,7 @@
     get_url:
      url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.23/bin/apache-tomcat-10.1.23.zip
      dest: /opt
-     mode: u+x
+     mode: '0775'
 
   - name: Adding User Tomcat
     user:
