@@ -23,6 +23,7 @@
     unarchive:
      src: /opt/apache-tomcat-10.1.23.zip
      dest: /opt
+     remote_src: yes
 
   - name: Change file ownership, group and permissions
     file:
