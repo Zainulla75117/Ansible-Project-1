@@ -22,18 +22,23 @@
   - name: Extracting Tomcat Package
     unarchive:
      src: /opt/apache-tomcat-10.1.23.zip
-     dest: /opt/
-     mode: u+x
+     dest: /opt
+
+  - name: Change file ownership, group and permissions
+    file:
+     path: /usr/local/apache-tomcat-10.1.23
      owner: tomcat
      group: tomcat
-
-  - name: Copying files to local folder
-    copy:
+     recurse: yes
+    
+  - name: Copying files to local folder - Softlink
+    file:
      src: /opt/apache-tomcat-10.1.23 
      dest: /usr/local/apache-tomcat-10.1.23
      owner: tomcat
      group: tomcat
-     mode: u+x
+     mode: '0775'
+     state: link
 
   - name: Copying tomcat.service to systemd dir 
     copy: 
