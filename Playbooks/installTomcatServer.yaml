@@ -46,16 +46,11 @@
      src: /home/ec2-user/tomcat.service
      dest: /etc/systemd/system/
 
-  - name: reloading systemctl
-    systemd_service:
-     state: restarted
-     daemon_reload: true
-     name: tomcat.service
-
   - name: chmod tomcat.service
     file:
      path: /etc/systemd/system/tomcat.service
      mode:  '0755'
+     
   - name: start tomcat
     systemd:
      name: tomcat.service
