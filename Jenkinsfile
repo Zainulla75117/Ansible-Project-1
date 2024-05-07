@@ -5,7 +5,7 @@ pipeline {
   
   environment {
    AWS_EC2=credentials('AWSEC2PEM') 
-   playbook= 'pingServer.yaml'
+   playbook= 'installTomcatServer.yaml'
   }
   
   stages {
