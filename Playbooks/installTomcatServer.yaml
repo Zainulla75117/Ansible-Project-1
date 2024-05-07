@@ -35,7 +35,7 @@
   - name: chmod for .sh file
     shell:
      cmd: chmod 755 *.sh
-     chdir: /opt/apache-tomcat-10.1.23
+     chdir: /opt/apache-tomcat-10.1.23/bin
 
     
   - name: Creating symbolic link - Start
