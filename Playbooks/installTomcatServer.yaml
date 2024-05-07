@@ -22,15 +22,15 @@
   - name: Extracting Tomcat Package
     unarchive:
      src: /opt/apache-tomcat-10.1.23.zip
-     dest: /opt/tomcat10
+     dest: /opt/
      mode: u+x
      owner: tomcat
      group: tomcat
 
   - name: Copying files to local folder
     copy:
-     src: /opt/apache-tomcat-9.0.44 
-     dest: /usr/local/apache-tomcat-9.0.44
+     src: /opt/apache-tomcat-10.1.23 
+     dest: /usr/local/apache-tomcat-10.1.23
      owner: tomcat
      group: tomcat
      mode: u+x
