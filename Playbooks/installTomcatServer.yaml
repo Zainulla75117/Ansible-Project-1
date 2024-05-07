@@ -33,9 +33,10 @@
      recurse: yes
 
   - name: chmod for .sh file
-    file:
-     path: /opt/apache-tomcat-10.1.23/*.sh
-     mode: '775'
+    shell:
+    cmd: chmod 755 *.sh
+    chdir: /opt/apache-tomcat-10.1.23
+
     
   - name: Creating symbolic link - Start
     file:
