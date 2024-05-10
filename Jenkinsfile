@@ -5,7 +5,7 @@ pipeline {
   
   environment {
    AWS_EC2=credentials('AWSEC2PEM') 
-   playbook= 'installTomcatServer.yaml'
+   playbook= 'installNexusServer.yaml'
   }
   
   stages {
