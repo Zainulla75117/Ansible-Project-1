@@ -1,0 +1,64 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: Install Tar
+    yum:
+     name: tar
+     state: latest
+
+  - name: Download Nexus Server
+    get_url:
+     url: https://download.sonatype.com/nexus/3/nexus-3.68.0-04-java11-unix.tar.gz
+     dest: /tmp
+
+  - name: Creating User Nexus
+    user:
+     name: nexus
+
+  - name: Extract Nexus File
+    unarchive: 
+     src: /tmp/nexus-3.68.0-04-java11-unix.tar.gz
+     dest: /opt 
+
+  - name: Change owner and group for Nexus dir..
+    file: 
+     path: /opt/nexus-3.68.0-04
+     recurse: yes
+     owner: nexus
+     group: nexus
+     mode: '0755'
+
+  - name: Change owner and group for sonatype-work dir..
+    file:
+     path: /opt/sonatype-work
+     recurse: yes
+     owner: nexus
+     group: nexus
+     mode: '0755'
+
+  - name: Seting the run_as_user parameter in nexus.rc
+    lineinfile:
+     dest: /opt/nexus-3.68.0-04/bin/nexus.rc
+     regexp: "#run_as_user="
+     line: "run_as_user=nexus"
+     backrefs: true
+
+  - name: Createing soft link for nexus
+    file:
+     src: /opt/nexus-3.68.0-04/bin/nexus
+     dest: /etc/init.d/nexus
+     state: link
+
+  - name: Start nexus service
+    systemd:
+     name: nexus
+     state: started
+     daemon_reload: yes
+     enabled: yes
+...
+
+       
+
