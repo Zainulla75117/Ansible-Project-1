@@ -22,6 +22,7 @@
     unarchive: 
      src: /tmp/nexus-3.68.0-04-java11-unix.tar.gz
      dest: /opt 
+     mode: '0755'
 
   - name: Change owner and group for Nexus dir..
     file: 
