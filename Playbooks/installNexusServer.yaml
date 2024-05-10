@@ -13,6 +13,7 @@
     get_url:
      url: https://download.sonatype.com/nexus/3/nexus-3.68.0-04-java11-unix.tar.gz
      dest: /tmp
+     mode: '0755'
 
   - name: Creating User Nexus
     user:
