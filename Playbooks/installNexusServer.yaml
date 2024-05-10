@@ -22,11 +22,13 @@
      mode: '0777'
 
 
+
   - name: Extract Nexus File
     unarchive: 
      src: /tmp/nexus-3.68.0-04-java11-unix.tar.gz
      dest: /opt 
      mode: '0755'
+     remote_src: yes
 
   - name: Change owner and group for Nexus dir..
     file: 
