@@ -9,15 +9,18 @@
      name: tar
      state: latest
 
+  - name: Creating User Nexus
+    user:
+     name: nexus
+
   - name: Download Nexus Server
     get_url:
      url: https://download.sonatype.com/nexus/3/nexus-3.68.0-04-java11-unix.tar.gz
      dest: /tmp
+     owner: nexus
+     group: nexus
      mode: '0777'
 
-  - name: Creating User Nexus
-    user:
-     name: nexus
 
   - name: Extract Nexus File
     unarchive: 
