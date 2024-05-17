@@ -23,10 +23,10 @@
      name: jenkins
      state: present
 
-  #- name: Enableing and Starting Jenkins
-  #  systemd_service:
-  #   name: jenkins
-   #  state: started
-  #   enabled: true
+  - name: Enableing and Starting Jenkins
+    systemd_service:
+     name: jenkins
+     state: started
+     enabled: true
 
 ...
