@@ -6,8 +6,8 @@
   tasks:
   - name: Downloading Jenkins
     get_url:
-     url: /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-     dest: /tmp
+     url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+     dest: /etc/yum.repos.d/jenkins.repo
 
   - name: Importing Jenkins Key
     shell: 
