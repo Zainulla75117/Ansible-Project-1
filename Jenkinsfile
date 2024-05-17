@@ -5,7 +5,7 @@ pipeline {
   
   environment {
    AWS_EC2=credentials('AWSEC2PEM') 
-   playbook= 'installNexusServer.yaml'
+   playbook= 'installJenkins.yaml'
   }
   
   stages {

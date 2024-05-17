@@ -1,0 +1,32 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: Downloading Jenkins
+    get_url:
+     url: /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+     dest: /tmp
+
+  - name: Importing Jenkins Key
+    shell: 
+     cmd: sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+  - name: Install Java 17
+    yum: 
+     name: fontconfig java-17-openjdk
+     state: present
+
+  - name: Install Jenkins
+    yum:
+     name: jenkins
+     state: present
+
+  #- name: Enableing and Starting Jenkins
+  #  systemd_service:
+  #   name: jenkins
+   #  state: started
+  #   enabled: true
+
+...
